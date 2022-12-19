@@ -56,4 +56,12 @@ public class BookDaoTest {
             System.out.println(book);
         }
     }
+
+    @Test
+    public void pageByPrice(){
+        List<Book> books = bookDao.queryForPageItemsByPrice(0, 4, 10, 50);
+        for (Book book : books) {
+            System.out.println(book);
+        }
+    }
 }

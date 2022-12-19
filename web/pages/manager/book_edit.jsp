@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8">注
 <title>编辑图书</title>
 	<%--静态包含-base标签-css样式-Jquery文件导入--%>
 	<%@ include file="/pages/common/head.jsp"%>

@@ -20,7 +20,8 @@ public class UserServlet extends BaseServlet {
 
     /**
      * 登录的业务处理
-     * @param req 请求对象
+     *
+     * @param req  请求对象
      * @param resp 响应对象
      * @throws ServletException
      * @throws IOException
@@ -36,6 +37,8 @@ public class UserServlet extends BaseServlet {
             req.setAttribute("username", username);
             req.getRequestDispatcher("/pages/user/login.jsp").forward(req, resp);
         } else {
+            //保存用户登录之后的信息
+            req.getSession().setAttribute("user", user);
             System.out.println("登录成功");
             req.getRequestDispatcher("/pages/user/login_success.jsp").forward(req, resp);
         }
@@ -43,7 +46,8 @@ public class UserServlet extends BaseServlet {
 
     /**
      * 注册的业务处理
-     * @param req 请求对象
+     *
+     * @param req  请求对象
      * @param resp 响应对象
      * @throws ServletException
      * @throws IOException
@@ -80,5 +84,12 @@ public class UserServlet extends BaseServlet {
             req.setAttribute("email", email);
             req.getRequestDispatcher("/pages/user/regist.jsp").forward(req, resp);
         }
+    }
+
+    protected void logout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // 1、销毁session中用户登录的信息，或者销毁session
+        req.getSession().invalidate();
+        // 2、重定向到首页
+        resp.sendRedirect(req.getContextPath() );
     }
 }

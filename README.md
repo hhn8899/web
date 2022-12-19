@@ -7,13 +7,16 @@ Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN�
 
 #### 软件架构
 软件架构说明
+B/S架构，一个书城的JavaWeb项目，具体功能包含了用户登录、注册，图书管理等。
 
 
-#### 安装教程
+#### 开发
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  jdk1.8
+2.  Idea
+3.  Mysql
+4.  Tomcat
+5.  HTML+CSS+JS+JQ+ELS
 
 #### 使用说明
 

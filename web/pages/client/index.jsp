@@ -14,18 +14,26 @@
 			<img class="logo_img" alt="" src="static/img/logo.gif" >
 			<span class="wel_word">网上书城</span>
 			<div>
-				<a href="pages/user/login.jsp">登录</a> |
-				<a href="pages/user/regist.jsp">注册</a> &nbsp;&nbsp;
-				<a href="pages/cart/cart.jsp">购物车</a>
-				<a href="pages/manager/manager.jsp">后台管理</a>
+				<c:if test="${empty sessionScope.user}">
+					<a href="pages/user/login.jsp">登录</a> |
+					<a href="pages/user/regist.jsp">注册</a> &nbsp;&nbsp;
+				</c:if>
+				<c:if test="${not empty sessionScope.user}">
+					<span>欢迎<span class="um_span">${sessionScope.user.username}</span>光临尚硅谷书城</span>
+					<a href="pages/order/order.jsp">我的订单</a>
+					<a href="pages/cart/cart.jsp">购物车</a>
+					<a href="pages/manager/manager.jsp">后台管理</a>
+					<a href="userServlet?action=logout">注销</a>&nbsp;&nbsp;
+				</c:if>
 			</div>
 	</div>
 	<div id="main">
 		<div id="book">
 			<div class="book_cond">
-				<form action="" method="get">
-					价格：<input id="min" type="text" name="min" value=""> 元 -
-						<input id="max" type="text" name="max" value=""> 元
+				<form action="client/bookServlet" method="get">
+					<input type="hidden" name="action" value="pageByPrice">
+					价格：<input id="min" type="text" name="min" value="${param.min}"> 元 -
+						<input id="max" type="text" name="max" value="${param.max}"> 元
 						<input type="submit" value="查询" />
 				</form>
 			</div>
@@ -71,10 +79,7 @@
 		<%@include file="/pages/common/page_nav.jsp"%>
 	</div>
 
-	<div id="bottom">
-		<span>
-			尚硅谷书城.Copyright &copy;2015
-		</span>
-	</div>
+	<%@ include file="/pages/common/footer.jsp"%>
+
 </body>
 </html>
